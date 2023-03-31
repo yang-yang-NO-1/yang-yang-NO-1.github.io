@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="电视盒子记录">
@@ -137,6 +137,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -152,10 +157,6 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main class="main">
@@ -329,7 +330,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%E8%AE%B0%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">电视盒子记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%A7%E5%BD%95%E6%8A%A5%E9%94%99%EF%BC%8C%E5%8D%A17-%EF%BC%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">1.0.1.</span> <span class="nav-text">烧录报错，卡7%，解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%E4%BF%AE%E6%94%B9%E5%BC%80%E6%9C%BA%E5%8A%A8%E7%94%BB%EF%BC%88%E5%88%A0%E9%99%A4%E8%AF%A5%E6%96%87%E4%BB%B6%E5%BC%80%E6%9C%BA%E5%8A%A8%E7%94%BB%E4%BC%9A%E6%98%BE%E7%A4%BA%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E5%8A%A8%E7%94%BB%EF%BC%89"><span class="nav-number">1.0.2.</span> <span class="nav-text">电视盒子修改开机动画（删除该文件开机动画会显示安卓系统自带动画）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%BC%80%E6%9C%BA%E7%AC%AC%E4%B8%80%E5%B1%8F%EF%BC%8Clogo%E7%95%8C%E9%9D%A2%EF%BC%88%E6%9C%AA%E6%88%90%E5%8A%9F%EF%BC%89"><span class="nav-number">1.0.3.</span> <span class="nav-text">修改开机第一屏，logo界面（未成功）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B6%E4%BD%9Cbootanimation-zip"><span class="nav-number">1.0.4.</span> <span class="nav-text">制作bootanimation.zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6APP"><span class="nav-number">1.0.5.</span> <span class="nav-text">卸载系统自带APP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADB%E5%8D%95%E5%88%B7%E6%9F%90%E4%B8%80%E5%88%86%E5%8C%BA%EF%BC%88%E4%BB%A5boot-img%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">1.0.6.</span> <span class="nav-text">ADB单刷某一分区（以boot.img为例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%93%9D%E7%89%99%E6%94%B9%E5%8F%8C%E9%A2%91wifi%E6%A8%A1%E5%9D%97"><span class="nav-number">1.0.7.</span> <span class="nav-text">蓝牙改双频wifi模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">1.0.8.</span> <span class="nav-text">安卓系统启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#armbian%E7%9B%B8%E5%85%B3"><span class="nav-number">1.0.9.</span> <span class="nav-text">armbian相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markdown-paste%E6%8F%92%E4%BB%B6%E5%A4%87%E5%BF%98%E5%BD%95"><span class="nav-number">1.0.10.</span> <span class="nav-text">markdown paste插件备忘录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode-hexo%E6%8F%92%E4%BB%B6%E5%A4%87%E5%BF%98%E5%BD%95%EF%BC%88%E7%9B%B4%E6%8E%A5vscode%E6%89%93%E5%BC%80-post%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="nav-number">1.0.11.</span> <span class="nav-text">vscode-hexo插件备忘录（直接vscode打开_post文件夹即可）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%92%E5%AD%90PCB%E8%AE%B0%E5%BD%95"><span class="nav-number">1.0.12.</span> <span class="nav-text">盒子PCB记录</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%E8%AE%B0%E5%BD%95"><span class="nav-text">电视盒子记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%A7%E5%BD%95%E6%8A%A5%E9%94%99%EF%BC%8C%E5%8D%A17-%EF%BC%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-text">烧录报错，卡7%，解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%E4%BF%AE%E6%94%B9%E5%BC%80%E6%9C%BA%E5%8A%A8%E7%94%BB%EF%BC%88%E5%88%A0%E9%99%A4%E8%AF%A5%E6%96%87%E4%BB%B6%E5%BC%80%E6%9C%BA%E5%8A%A8%E7%94%BB%E4%BC%9A%E6%98%BE%E7%A4%BA%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E5%8A%A8%E7%94%BB%EF%BC%89"><span class="nav-text">电视盒子修改开机动画（删除该文件开机动画会显示安卓系统自带动画）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%BC%80%E6%9C%BA%E7%AC%AC%E4%B8%80%E5%B1%8F%EF%BC%8Clogo%E7%95%8C%E9%9D%A2%EF%BC%88%E6%9C%AA%E6%88%90%E5%8A%9F%EF%BC%89"><span class="nav-text">修改开机第一屏，logo界面（未成功）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B6%E4%BD%9Cbootanimation-zip"><span class="nav-text">制作bootanimation.zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6APP"><span class="nav-text">卸载系统自带APP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADB%E5%8D%95%E5%88%B7%E6%9F%90%E4%B8%80%E5%88%86%E5%8C%BA%EF%BC%88%E4%BB%A5boot-img%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-text">ADB单刷某一分区（以boot.img为例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%93%9D%E7%89%99%E6%94%B9%E5%8F%8C%E9%A2%91wifi%E6%A8%A1%E5%9D%97"><span class="nav-text">蓝牙改双频wifi模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-text">安卓系统启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#armbian%E7%9B%B8%E5%85%B3"><span class="nav-text">armbian相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markdown-paste%E6%8F%92%E4%BB%B6%E5%A4%87%E5%BF%98%E5%BD%95"><span class="nav-text">markdown paste插件备忘录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode-hexo%E6%8F%92%E4%BB%B6%E5%A4%87%E5%BF%98%E5%BD%95%EF%BC%88%E7%9B%B4%E6%8E%A5vscode%E6%89%93%E5%BC%80-post%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="nav-text">vscode-hexo插件备忘录（直接vscode打开_post文件夹即可）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%92%E5%AD%90PCB%E8%AE%B0%E5%BD%95"><span class="nav-text">盒子PCB记录</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -353,10 +354,19 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yang-yang-NO-1" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yang-yang-NO-1" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
 
 
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
     <div id="music136player">
