@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #d07db1;
+  background: #ff29ed;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2440,7 +2440,7 @@ ul.breadcrumb li + li:last-child {
   padding: 0;
 }
 body {
-  background-image: url("/images/12-14-2021.bmp");
+  background-image: url("https://api.mfstudio.cc/bing/");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
