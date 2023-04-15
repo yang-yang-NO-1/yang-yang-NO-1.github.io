@@ -176,14 +176,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-05-03 14:32:47" itemprop="dateCreated datePublished" datetime="2022-05-03T14:32:47+08:00">2022-05-03</time>
+              <time title="创建时间：2022-05-03 14:32:41" itemprop="dateCreated datePublished" datetime="2022-05-03T14:32:41+08:00">2022-05-03</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-15 18:14:22" itemprop="dateModified" datetime="2023-04-15T18:14:22+08:00">2023-04-15</time>
+                <time title="修改时间：2023-04-15 18:19:23" itemprop="dateModified" datetime="2023-04-15T18:19:23+08:00">2023-04-15</time>
               </span>
 
           
@@ -197,23 +197,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-<h1 id="树莓派备份记录"><a href="#树莓派备份记录" class="headerlink" title="树莓派备份记录"></a>树莓派备份记录</h1><h2 id="使用-rpi-backup-脚本进行备份（使用中）"><a href="#使用-rpi-backup-脚本进行备份（使用中）" class="headerlink" title="使用 rpi-backup 脚本进行备份（使用中）"></a>使用 rpi-backup 脚本进行备份（使用中）</h2><p>最好的树莓派系统备份解决方案，解决了备份文件体积大，恢复也方便，这个脚本备份文件的体积为 已用空间×1.2，我的系统占用了不到 10G 的空间，备份文件大概是 11G 多一些，这相比于全盘备份的 128G 已经小太多了，在使用7z进行极限压缩后甚至只有 1.7G，进行日常归档备份完全可以接受</p>
-<h3 id="首先-clone-该脚本："><a href="#首先-clone-该脚本：" class="headerlink" title="首先 clone 该脚本："></a>首先 clone 该脚本：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git clone https://github.com/nanhantianyi/rpi-backup.git &amp;&amp; cd rpi-backup</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="然后要安装依赖项"><a href="#然后要安装依赖项" class="headerlink" title="然后要安装依赖项"></a>然后要安装依赖项</h3><p>这里我用的是 Manjaro-arm 系统。在 Manjaro 系统中该脚本无法自动安装依赖项，需要运行这行命令 sudo pacman -Sy &amp;&amp; pacman -S dosfstools parted multipath-tools rsync 来安装依赖。<br>如果你是用 apt 进行安装软件的系统，可以跳过这一步，该脚本会自动安装依赖项。</p>
-<h3 id="然后运行"><a href="#然后运行" class="headerlink" title="然后运行"></a>然后运行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ./back.sh youImageName.img</span><br><span class="line">或者</span><br><span class="line">sudo bash back.sh xxx.img  (xxx.img为备份文件名，自行修改)</span><br></pre></td></tr></table></figure>
-<p>该脚本就会开始备份，如果不指定文件名则会自动命名。<br>如果你的内存卡剩余空间不够的话就挂载 U 盘，将 img 直接保存在 U 盘中，要注意U盘务必挂载到 /media 目录下，不要挂载到 /mnt，因为脚本会对 /mnt 目录进行备份操作，会导致递归性的备份，总之就是不要挂载到 /mnt 目录，切记！</p>
-<p>脚本运行结束后就得到了备份镜像。在 /home/pi/rpi-backup</p>
-<h2 id="备份的恢复"><a href="#备份的恢复" class="headerlink" title="备份的恢复"></a>备份的恢复</h2><p>恢复系统后执行 sudo bash resize.sh 扩容root分区，也可以用树莓派raspi-config进行扩容</p>
-<p>直接用 DiskGenius 将空闲分区分配给 root 分区，这样不用在进入系统后做其他操作。<br>也可以进入系统后执行 git clone 来的 resize.sh 脚本进行扩容操作：sudo ./resize.sh，脚本运行完毕后会自动重启，两个步骤效果一样（但在部分系统会无法运行，还是推荐用 DiskGenius 弄好再开机）。<br>详细流程见<br><a target="_blank" rel="noopener" href="https://shumeipai.nxez.com/2020/10/28/backup-the-raspberry-pi-system-as-an-img-file.html">https://shumeipai.nxez.com/2020/10/28/backup-the-raspberry-pi-system-as-an-img-file.html</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">命令简记</span><br><span class="line">复制文件到U盘 </span><br><span class="line">    sudo mkdir usbdisk 新建文件夹</span><br><span class="line">    sudo mount -o rw /dev/sda1 /home/pi/usbdisk  将U盘挂载至新建的文件夹</span><br><span class="line">    sudo cp -r /home/pi/rpi-backup /home/pi/usbdisk  复制文件夹rpi-backup到usbdisk</span><br><span class="line">    umount　XXXXX  卸载挂载的U盘</span><br><span class="line">    使用umount卸载磁盘时报错，提示target is busy：</span><br><span class="line">    方法一（不推荐）：</span><br><span class="line">    fuser -mv /mnt/  </span><br><span class="line">    或者    lsof /mnt/</span><br><span class="line">    kill -9 2371</span><br><span class="line">    方法二（退出目录，这个最合适）：</span><br><span class="line">    cd </span><br><span class="line">    umount /home/pi/usbdisk</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">如果要一插入U盘，系统就自动挂接，则需安装一个软件 usbmount，如下：</span><br><span class="line">安装 usbmount</span><br><span class="line">sudo apt-get install usbmount</span><br><span class="line">安装完成后，系统就可以自动识别并挂接U盘的，</span><br><span class="line">插入U盘，则系统将自动把U盘挂接到 /media/usb0 目录中 (如果有第二个U盘，则挂接到 /media/usb1 中，如此类推)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">删除指定位置的文件夹： 该指定会删除文件夹以及它里面的所有文件</span><br><span class="line">rm -rf 想要删除的文件夹地址/文件夹名称</span><br><span class="line">rm【空格】-rf 【空格】想要删除的文件夹地址/文件夹名称</span><br><span class="line">删除制定位置的文件：</span><br><span class="line">rm -f 想要删除的文件夹地址/文件夹名称.文件后缀</span><br><span class="line">rm【空格】-f【空格】想要删除的文件夹地址/文件夹名称.文件后缀</span><br></pre></td></tr></table></figure>
-<h1 id="使用PiShrink（成功）"><a href="#使用PiShrink（成功）" class="headerlink" title="使用PiShrink（成功）"></a>使用PiShrink（成功）</h1><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/Drewsif/PiShrink/master/pishrink.sh</span><br><span class="line">chmod +x pishrink.sh</span><br><span class="line">sudo mv pishrink.sh /usr/local/bin</span><br></pre></td></tr></table></figure>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">cd 进入镜像所在目录</span><br><span class="line">[user@localhost PiShrink]$ sudo pishrink.sh pi.img</span><br><span class="line">e2fsck 1.42.9 (28-Dec-2013)</span><br><span class="line">Pass 1: Checking inodes, blocks, and sizes</span><br><span class="line">Pass 2: Checking directory structure</span><br><span class="line">Pass 3: Checking directory connectivity</span><br><span class="line">Pass 4: Checking reference counts</span><br><span class="line">Pass 5: Checking group summary information</span><br><span class="line">/dev/loop1: 88262/1929536 files (0.2% non-contiguous), 842728/7717632 blocks</span><br><span class="line">resize2fs 1.42.9 (28-Dec-2013)</span><br><span class="line">resize2fs 1.42.9 (28-Dec-2013)</span><br><span class="line">Resizing the filesystem on /dev/loop1 to 773603 (4k) blocks.</span><br><span class="line">Begin pass 2 (max = 100387)</span><br><span class="line">Relocating blocks             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><br><span class="line">Begin pass 3 (max = 236)</span><br><span class="line">Scanning inode table          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><br><span class="line">Begin pass 4 (max = 7348)</span><br><span class="line">Updating inode references     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><br><span class="line">The filesystem on /dev/loop1 is now 773603 blocks long.</span><br><span class="line"></span><br><span class="line">Shrunk pi.img from 30G to 3.1G</span><br></pre></td></tr></table></figure>
-<p>详情见<a target="_blank" rel="noopener" href="https://github.com/Drewsif/PiShrink">https://github.com/Drewsif/PiShrink</a></p>
-<h1 id="安装awtrix相关"><a href="#安装awtrix相关" class="headerlink" title="安装awtrix相关"></a>安装awtrix相关</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">安装Java 8 (1.8_232)</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install openjdk-8-jdk</span><br><span class="line">java -version</span><br><span class="line">sudo update-alternatives --config java</span><br><span class="line">最后，要卸载 default-jdk 软件包，只需运行：</span><br><span class="line">sudo apt remove default-jdk</span><br><span class="line">安装awtrix的host</span><br><span class="line">wget -N https://blueforcer.de/awtrix/awtrix.sh ; sudo sh awtrix.sh</span><br><span class="line">sudo service awtrix start</span><br><span class="line">stop AWTRIX:</span><br><span class="line">sudo service awtrix stop </span><br><span class="line">AWTRIX Restart:</span><br><span class="line">sudo service awtrix restart</span><br></pre></td></tr></table></figure>
-<h1 id="修改时区，矫正时间"><a href="#修改时区，矫正时间" class="headerlink" title="修改时区，矫正时间"></a>修改时区，矫正时间</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">打开设置：</span><br><span class="line">    sudo dpkg-reconfigure tzdata</span><br><span class="line">    date</span><br><span class="line">打开ntp配置文件：</span><br><span class="line">    sudo nano /etc/ntp.conf</span><br><span class="line">找到以下代码：</span><br><span class="line">    # You do need to talk to an NTP server or two (or three).</span><br><span class="line">    # server ntp.your-provider.example</span><br><span class="line">在后边添加以下内容</span><br><span class="line">    server ntp.fudan.edu.cn iburst perfer</span><br><span class="line">    server time.asia.apple.com iburst</span><br><span class="line">    server asia.pool.ntp.org iburst</span><br><span class="line">    server ntp.nict.jp iburst</span><br><span class="line">    server time.nist.gov iburst</span><br><span class="line">重启ntp服务</span><br><span class="line">    sudo /etc/init.d/ntp restart</span><br></pre></td></tr></table></figure>
-<h1 id="增加定时任务"><a href="#增加定时任务" class="headerlink" title="增加定时任务"></a>增加定时任务</h1><p><img src="https://img-blog.csdnimg.cn/2020062621515630.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NzMyNjczNQ==,size_16,color_FFFFFF,t_70" alt="alt 图片"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> nano /etc/crontab</span><br><span class="line">0  0    * * *   root    reboot</span><br><span class="line">0  7    * * *   root    reboot</span><br></pre></td></tr></table></figure>
+          <h1 id="树莓派备份记录"><a href="#树莓派备份记录" class="headerlink" title="树莓派备份记录"></a>树莓派备份记录</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/03/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%A4%87%E4%BB%BD%E8%AE%B0%E5%BD%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -263,7 +255,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-15 18:14:22" itemprop="dateModified" datetime="2023-04-15T18:14:22+08:00">2023-04-15</time>
+                <time title="修改时间：2023-04-15 18:19:23" itemprop="dateModified" datetime="2023-04-15T18:19:23+08:00">2023-04-15</time>
               </span>
 
           
@@ -277,10 +269,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-<h1 id="git命令、新建博客命令记录（clone加速在http-后加gitclone-com-）"><a href="#git命令、新建博客命令记录（clone加速在http-后加gitclone-com-）" class="headerlink" title="git命令、新建博客命令记录（clone加速在http://后加gitclone.com/）"></a>git命令、新建博客命令记录（clone加速在http://后加gitclone.com/）</h1><h2 id="git命令备忘"><a href="#git命令备忘" class="headerlink" title="git命令备忘"></a>git命令备忘</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#初始化</span><br><span class="line">git init</span><br><span class="line">#用命令git add告诉Git，把文件添加到仓库：</span><br><span class="line">git add *</span><br><span class="line">#提交本地仓库</span><br><span class="line">git commit -m &quot;all is new&quot;</span><br><span class="line">#添加</span><br><span class="line">git remote add origin 你的仓库地址</span><br><span class="line">#提交</span><br><span class="line">git push -u origin master</span><br><span class="line">其他命令</span><br><span class="line">添加一个或多个文件到暂存区：</span><br><span class="line">git add [file1] [file2] ...</span><br><span class="line">添加指定目录到暂存区，包括子目录：</span><br><span class="line">git add [dir]</span><br><span class="line">添加当前目录下的所有文件到暂存区：</span><br><span class="line">git add .</span><br><span class="line">以下实例拷贝远程 git 项目，本地项目名为 another-runoob-name：</span><br><span class="line">git clone 你的仓库地址 another-runoob-name</span><br><span class="line">git status 命令用于查看在你上次提交之后是否有对文件进行再次修改。</span><br><span class="line">git status</span><br><span class="line">通常我们使用 -s 参数来获得简短的输出结果：</span><br><span class="line">git status -s</span><br><span class="line">显示所有远程仓库：</span><br><span class="line">git remote -v</span><br><span class="line">以下我们先载入远程仓库，然后查看信息：</span><br><span class="line">git clone https://github.com/tianqixin/runoob-git-test</span><br><span class="line">cd runoob-git-test</span><br><span class="line">git remote -v</span><br><span class="line">origin  https://github.com/tianqixin/runoob-git-test (fetch)</span><br><span class="line">origin  https://github.com/tianqixin/runoob-git-test (push)</span><br><span class="line">origin 为远程地址的别名</span><br><span class="line">git push 命用于从将本地的分支版本上传到远程并合并。</span><br><span class="line">命令格式如下：</span><br><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;如果本地分支名与远程分支名相同，则可以省略冒号：</span><br><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;</span><br><span class="line">实例</span><br><span class="line">以下命令将本地的 master 分支推送到 origin 主机的 master 分支。</span><br><span class="line">git push origin master</span><br><span class="line">相等于：</span><br><span class="line">git push origin master:master</span><br><span class="line">如果本地版本与远程版本有差异，但又要强制推送可以使用 --force 参数：</span><br><span class="line">git push --force origin master</span><br><span class="line">删除主机的分支可以使用 --delete 参数，以下命令表示删除 origin 主机的 master 分支：</span><br><span class="line">git push origin --delete master</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-basic-operations.html">git命令详细教程</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-basic-operations.html">https://www.runoob.com/git/git-basic-operations.html</a></p>
-<h2 id="备忘新建博客命令"><a href="#备忘新建博客命令" class="headerlink" title="备忘新建博客命令"></a>备忘新建博客命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git bash here</span><br><span class="line"> hexo new &lt;title&gt;</span><br><span class="line"> hexo new &quot;我的第一篇文章&quot;</span><br><span class="line"> hexo g  生成博客</span><br><span class="line"> hexo d 部署博客</span><br><span class="line"> 修改代理ip，在gitbash中修改</span><br><span class="line">git config --global http.proxy(查询http代理)</span><br><span class="line">git config --global http.proxy http://192.168.11.251:7890（修改http代理）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <h1 id="git命令、新建博客命令记录（clone加速在http-后加gitclone-com-）"><a href="#git命令、新建博客命令记录（clone加速在http-后加gitclone-com-）" class="headerlink" title="git命令、新建博客命令记录（clone加速在http://后加gitclone.com/）"></a>git命令、新建博客命令记录（clone加速在http://后加gitclone.com/）</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/20/git%E3%80%81github%E3%80%81blog%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -330,7 +327,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-15 18:14:22" itemprop="dateModified" datetime="2023-04-15T18:14:22+08:00">2023-04-15</time>
+                <time title="修改时间：2023-04-15 18:19:23" itemprop="dateModified" datetime="2023-04-15T18:19:23+08:00">2023-04-15</time>
               </span>
 
           
@@ -344,12 +341,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-<h1 id="platformio-ini文件配置举例"><a href="#platformio-ini文件配置举例" class="headerlink" title="platformio.ini文件配置举例"></a>platformio.ini文件配置举例</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">[platformio]</span><br><span class="line">default_envs = nodemcuv2</span><br><span class="line"></span><br><span class="line">; Set/override default options for each &quot;[env:***]&quot;</span><br><span class="line">[env]</span><br><span class="line">build_flags =</span><br><span class="line">    -D VERSION=1.2.3</span><br><span class="line">    -D DEBUG=1</span><br><span class="line">lib_deps_builtin =</span><br><span class="line">    SPI</span><br><span class="line">    Wire</span><br><span class="line">lib_deps_external =</span><br><span class="line">    bblanchon/ArduinoJson @ ~5.6,!=5.4</span><br><span class="line">    https://github.com/gioblu/PJON.git#v2.0</span><br><span class="line">    IRremoteESP8266=https://github.com/markszabo/IRremoteESP8266/archive/master.zip</span><br><span class="line"></span><br><span class="line">[env:nodemcuv2]</span><br><span class="line">platform = espressif8266</span><br><span class="line">framework = arduino</span><br><span class="line">board = nodemcuv2</span><br><span class="line"></span><br><span class="line">; Build options</span><br><span class="line">build_flags =</span><br><span class="line">    $&#123;env.build_flags&#125;</span><br><span class="line">    -DSSID_NAME=HELLO</span><br><span class="line">    -DSSID_PASWORD=WORLD</span><br><span class="line"></span><br><span class="line">; Library options</span><br><span class="line">lib_deps =</span><br><span class="line">    $&#123;env.lib_deps_builtin&#125;</span><br><span class="line">    $&#123;env.lib_deps_external&#125;</span><br><span class="line">    https://github.com/me-no-dev/ESPAsyncTCP.git</span><br><span class="line">    knolleary/PubSubClient@^2.8</span><br><span class="line">    paulstoffregen/OneWire</span><br><span class="line"></span><br><span class="line">; Serial Monitor options</span><br><span class="line">monitor_speed = 115200</span><br><span class="line">monitor_flags =</span><br><span class="line">    --encoding</span><br><span class="line">    hexlify</span><br><span class="line"></span><br><span class="line">; Unit Testing options</span><br><span class="line">test_ignore = test_desktop</span><br><span class="line"></span><br><span class="line">[env:bluepill_f103c8]</span><br><span class="line">platform = ststm32</span><br><span class="line">framework = arduino</span><br><span class="line">board = bluepill_f103c8</span><br><span class="line"></span><br><span class="line">; Library options</span><br><span class="line">lib_deps = $&#123;env.lib_deps_external&#125;</span><br><span class="line"></span><br><span class="line">; Debug options</span><br><span class="line">debug_tool = custom</span><br><span class="line">debug_server =</span><br><span class="line">    $&#123;platformio.packages_dir&#125;/tool-jlink/JLinkGDBServer</span><br><span class="line">    -singlerun</span><br><span class="line">    -if</span><br><span class="line">    SWD</span><br><span class="line">    -select</span><br><span class="line">    USB</span><br><span class="line">    -port</span><br><span class="line">    2331</span><br><span class="line">    -device</span><br><span class="line">    STM32F103C8</span><br><span class="line"></span><br><span class="line">; Unit Testing options</span><br><span class="line">test_ignore = test_desktop</span><br></pre></td></tr></table></figure>
-<p>from<br><a target="_blank" rel="noopener" href="https://docs.platformio.org/en/latest/projectconf/index.html">https://docs.platformio.org/en/latest/projectconf/index.html</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">upload_speed = 921600</span><br><span class="line">monitor_speed = 115200</span><br><span class="line">platform = espressif32 @1.8.0// **此处修改官方库为1.0.2（对应pio的1.8.0）**</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/yang-yang-NO-1/test/blob/yang-yang-NO-1-patch-1/4.png?raw=true" alt="alt 我的图片"><br><em><strong>此处修改官方库为1.0.2（对应pio的1.8.0），图中为pio项目release可见1.0.1对应pio的1.6.0</strong></em></p>
-
+          <h1 id="platformio-ini文件配置举例"><a href="#platformio-ini文件配置举例" class="headerlink" title="platformio.ini文件配置举例"></a>platformio.ini文件配置举例</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/30/pio%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%BE%E4%BE%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -399,7 +399,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-15 18:14:22" itemprop="dateModified" datetime="2023-04-15T18:14:22+08:00">2023-04-15</time>
+                <time title="修改时间：2023-04-15 18:19:23" itemprop="dateModified" datetime="2023-04-15T18:19:23+08:00">2023-04-15</time>
               </span>
 
           
@@ -413,11 +413,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-<h1 id="嵌入式资源"><a href="#嵌入式资源" class="headerlink" title="嵌入式资源"></a>嵌入式资源</h1><p>[esp32、esp8266]<br><a href="https://gitee.com/jun-tian/awesome-esp/blob/main/README.md#https://gitee.com/link?target=http%3A%2F%2Fespressif.com%2Fen%2Fproducts%2Fhardware%2Fesp32%2Foverview">https://gitee.com/jun-tian/awesome-esp/blob/main/README.md#https://gitee.com/link?target=http%3A%2F%2Fespressif.com%2Fen%2Fproducts%2Fhardware%2Fesp32%2Foverview</a><br>[嵌入式学习资源]<br><a target="_blank" rel="noopener" href="https://gitee.com/zhengnianli/EmbedSummary">https://gitee.com/zhengnianli/EmbedSummary</a><br>[esp8266/esp32]<br> <a target="_blank" rel="noopener" href="http://www.mcublog.cn/category/esp8266/page/4/">http://www.mcublog.cn/category/esp8266/page/4/</a></p>
-<h1 id="awtrix命令"><a href="#awtrix命令" class="headerlink" title="awtrix命令"></a>awtrix命令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service awtrix start //Starting AWTRIX</span><br><span class="line">sudo service awtrix stop //Stop AWTRIX</span><br><span class="line">sudo service awtrix restart//AWTRIX Restart</span><br></pre></td></tr></table></figure>
-
-
+          <h1 id="嵌入式资源"><a href="#嵌入式资源" class="headerlink" title="嵌入式资源"></a>嵌入式资源</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/22/esp32%E8%B5%84%E6%BA%90%E7%AB%99%E5%A4%87%E5%BF%98%E5%BD%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -467,7 +471,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-15 18:14:22" itemprop="dateModified" datetime="2023-04-15T18:14:22+08:00">2023-04-15</time>
+                <time title="修改时间：2023-04-15 18:19:23" itemprop="dateModified" datetime="2023-04-15T18:19:23+08:00">2023-04-15</time>
               </span>
 
           
@@ -481,11 +485,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-<h1 id="正反解矩阵简化简记"><a href="#正反解矩阵简化简记" class="headerlink" title="正反解矩阵简化简记"></a>正反解矩阵简化简记</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">word中通配符</span><br><span class="line">查找内容：[0-9]&#123;1,&#125;(查找0-9的数字，至少重复一次)</span><br><span class="line">替换内容：*&amp;(表示查找的内容)</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/yang-yang-NO-1/test/blob/yang-yang-NO-1-patch-1/1.png?raw=true" alt="alt 我的图片"><br><img src="https://github.com/yang-yang-NO-1/test/blob/yang-yang-NO-1-patch-1/3.jpg?raw=true" alt="alt 我的图片"><br><img src="https://github.com/yang-yang-NO-1/test/blob/yang-yang-NO-1-patch-1/2.jpg?raw=true" alt="alt 我的图片"><br>MARKDOWN语法看这个<br><a target="_blank" rel="noopener" href="https://markdown.com.cn/basic-syntax/images.html">https://markdown.com.cn/basic-syntax/images.html</a>  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">备忘新建博客命令</span><br><span class="line">git bash here</span><br><span class="line"> hexo new &lt;title&gt;</span><br><span class="line"> hexo new &quot;我的第一篇文章&quot;</span><br><span class="line"> 修改代理ip，在gitbash中修改</span><br><span class="line">git config --global http.proxy(查询http代理)</span><br><span class="line">git config --global http.proxy http://192.168.11.251:7890（修改http代理）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+          <h1 id="正反解矩阵简化简记"><a href="#正反解矩阵简化简记" class="headerlink" title="正反解矩阵简化简记"></a>正反解矩阵简化简记</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/08/%E6%AD%A3%E5%8F%8D%E8%A7%A3%E7%9F%A9%E9%98%B5%E7%AE%80%E5%8C%96%E7%AE%80%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -535,7 +543,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-15 18:14:22" itemprop="dateModified" datetime="2023-04-15T18:14:22+08:00">2023-04-15</time>
+                <time title="修改时间：2023-04-15 18:19:23" itemprop="dateModified" datetime="2023-04-15T18:19:23+08:00">2023-04-15</time>
               </span>
 
           
@@ -549,10 +557,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-<h1 id="修改主页个人信息"><a href="#修改主页个人信息" class="headerlink" title="修改主页个人信息"></a>修改主页个人信息</h1><p><img src="/2022/01/07/%E4%BF%AE%E6%94%B9hexo%E4%B8%BB%E9%A1%B5%E4%BF%A1%E6%81%AF/20230331154350.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">生成、预览、部署</span><br></pre></td></tr></table></figure>
-<h2 id="成功，嘿嘿"><a href="#成功，嘿嘿" class="headerlink" title="成功，嘿嘿"></a>成功，嘿嘿</h2>
+          <h1 id="修改主页个人信息"><a href="#修改主页个人信息" class="headerlink" title="修改主页个人信息"></a>修改主页个人信息</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/07/%E4%BF%AE%E6%94%B9hexo%E4%B8%BB%E9%A1%B5%E4%BF%A1%E6%81%AF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -602,7 +615,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-15 18:14:22" itemprop="dateModified" datetime="2023-04-15T18:14:22+08:00">2023-04-15</time>
+                <time title="修改时间：2023-04-15 18:19:23" itemprop="dateModified" datetime="2023-04-15T18:19:23+08:00">2023-04-15</time>
               </span>
 
           
@@ -616,32 +629,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-<h1 id="hexo框架在GitHub搭建网站错误记录"><a href="#hexo框架在GitHub搭建网站错误记录" class="headerlink" title="hexo框架在GitHub搭建网站错误记录"></a>hexo框架在GitHub搭建网站错误记录</h1><ol>
-<li>申请GitHub账号和安装hexo框架见</li>
-</ol>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60578464">https://zhuanlan.zhihu.com/p/60578464</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26625249">https://zhuanlan.zhihu.com/p/26625249</a></li>
-</ul>
-<p>next配置见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60424755">https://zhuanlan.zhihu.com/p/60424755</a><br>2. 部署 Hexo 到 GitHub Pages修改_config.yml 文件末尾的 Deployment 部分，修改成如下,<strong>注意repository末尾的<code>.git</code></strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:用户名/用户名.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>修改主题至next时，本地预览网页出现<code>“ &#123;% extends ‘_layout.swig‘ %&#125; &#123;% import ‘_macro/post.swig‘ as post_template %&#125;“</code>问题，原因是原因是hexo在5.0之后把swig给删除了需要自己手动安装<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig </span><br></pre></td></tr></table></figure></li>
-<li>hexo常用的写博客相关的命令<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean          # 清除缓存文件等</span><br><span class="line">hexo g              # 生成页面</span><br><span class="line">hexo s              # 启动预览</span><br><span class="line">hexo d              # 部署</span><br></pre></td></tr></table></figure></li>
-<li>侧边栏添加网易云音乐<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打开网页版的网易云音乐，选择喜欢的音乐 （不需要会员的），点击生成外链播放器</span><br></pre></td></tr></table></figure>
-<img src="https://pic2.zhimg.com/v2-fcb7d44ccdca3760c98db0d13817f2b5_r.jpg" alt="alt 网易云"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">复制外链的代码</span><br></pre></td></tr></table></figure>
-<img src="https://pic4.zhimg.com/v2-16eec195312cde7b1d257fac6f3c8d0b_r.jpg" alt="alt 网易云"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">比如在侧栏插入这首歌的音乐播放器，修改 blog\themes\next\layout\_macro的sidebar.swig文件，添加刚刚复制的外链代码</span><br></pre></td></tr></table></figure>
-<img src="https://pic4.zhimg.com/v2-03db51002497b27e4d5888e0efd577c7_r.jpg" alt="alt 网易云"></li>
-</ol>
-<p><strong>重新生成、部署网页</strong></p>
-<ol start="6">
-<li>hexo框架使用markdown语法，详见</li>
-</ol>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></li>
-</ul>
-
+          <h1 id="hexo框架在GitHub搭建网站错误记录"><a href="#hexo框架在GitHub搭建网站错误记录" class="headerlink" title="hexo框架在GitHub搭建网站错误记录"></a>hexo框架在GitHub搭建网站错误记录</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/06/hexo%E6%A1%86%E6%9E%B6%E5%9C%A8GitHub%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
