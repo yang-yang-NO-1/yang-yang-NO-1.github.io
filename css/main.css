@@ -2464,7 +2464,7 @@ ul.breadcrumb li + li:last-child {
   margin-top: 16px;
 }
 body {
-  background-image: url("https://api.mfstudio.cc/bing");
+  background-image: url("https://bing.img.run/1920x1080.php");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
